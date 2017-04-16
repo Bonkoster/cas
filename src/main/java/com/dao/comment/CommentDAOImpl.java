@@ -1,4 +1,4 @@
-package com.dao;
+package com.dao.comment;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -46,7 +46,7 @@ public class CommentDAOImpl implements CommentDAO {
 	public List<Comment> getAllComments() {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
-		List<Comment> coms = null;
+		List<Comment> coms = new ArrayList<Comment>();
 		try {
 			tx = sess.beginTransaction();
 			coms = sess.createQuery("FROM Comment").list();

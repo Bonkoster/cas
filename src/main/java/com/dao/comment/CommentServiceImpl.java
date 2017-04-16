@@ -1,4 +1,4 @@
-package com.dao;
+package com.dao.comment;
 
 import java.util.List;
 

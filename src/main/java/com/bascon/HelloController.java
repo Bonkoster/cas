@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dao.CommentService;
-import com.dao.CommentServiceImpl;
+import com.dao.comment.CommentService;
+import com.dao.comment.CommentServiceImpl;
 import com.model.Comment;
 
 @Controller
@@ -38,7 +38,7 @@ public class HelloController {
 	public ModelAndView Welcome(){
 		ModelAndView md = new ModelAndView("Hello");
 		
-		String rick = "https://www.youtube.com/embed/39WSv4SMJHQ";
+		String rick = "https://www.youtube.com/embed/39WSv4SMJHQ";		
 		
 		String title = "Welcome to my Special site About Madness Combat";
 		md.addObject("title", title);

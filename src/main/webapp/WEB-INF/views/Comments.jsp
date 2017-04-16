@@ -11,18 +11,30 @@
 <title>${title }</title>
 </head>
 <body>
-
+<div align="center">
+<div class="commentmain">
 <c:forEach items="${comments }" var="comment">
-<c:out value="${comment.author}">
+<div class="commentcontent">
+<div align="left" class="comment">
+<c:out value="${comment.author} Написал:">
+</c:out>
+</div>
+<div align="left">
+<c:out value="${comment.date }" >
 </c:out><br>
+</div>
+<div align="left" class="commenttext">
 <c:out value="${comment.content }">
 </c:out><br>
+</div>
+</div>
 </c:forEach>
- 
- <form:form action="/cas/addComment" method="POST" modelAttribute="comment">
- 	<table>
+
+<div align="left">
+ <form:form action="/cas/addComment" method="POST" modelAttribute="comment" >
+ 	<table >
  		<tr>
- 			<td><form:label path="author">Author:</form:label></td>
+ 			<td><form:label path="author" >Author:</form:label></td>
  			<td><form:input path="author"/></td>
  		</tr>
  		<tr>
@@ -34,5 +46,8 @@
  		</tr>
  	</table>
  </form:form>
+ </div>
+ </div>
+ </div>
 </body>
 </html>

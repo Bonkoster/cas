@@ -8,9 +8,9 @@
 <div class="Astarot"></div>
 		<div id="navbarCollapse" class="collapse navbar-collapse darkTheme">
     		<ul class="nav navbar-nav">
-      			<li><a href="/cas/hello">Main page</a></li>
-      			<li><a href="/cas/getSeries">All series</a></li>
-      			<li><a href="/cas/comments">FeedBacks</a></li>
+      			<li><a href="/cas/hello">Главная страница</a></li>
+      			<li><a href="/cas/getSeries">Все серии</a></li>
+      			<li><a href="/cas/comments">Отзывы</a></li>
     		</ul>
   		</div>
  </header>
