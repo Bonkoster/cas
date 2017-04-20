@@ -11,4 +11,6 @@ public interface EpisodesDAO {
 	public void addEpisode(Episode episode);
 	
 	public void deleteEpisode (int id);
+	
+	public Episode getEpisode(int id);
 }

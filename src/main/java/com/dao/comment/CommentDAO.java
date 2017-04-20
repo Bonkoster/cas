@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.model.Comment;
+import com.model.Episode;
 
 public interface CommentDAO {
 	

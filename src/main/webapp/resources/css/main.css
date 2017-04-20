@@ -32,4 +32,12 @@ body {
 .commenttext {
 	color: #eee3e7;
 }
+
+.episodemain {
+	width: 70%;
+}
+
+.secretfunc {
+	visibility: collapse;
+}
 	

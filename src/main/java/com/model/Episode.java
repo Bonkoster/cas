@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "episodes_table")
@@ -15,23 +17,30 @@ public class Episode {
 	@Id
 	@GeneratedValue
 	@Column(name = "episode_id")
-	private int Id;
+	private int id;
 	
 	@Column(name = "episode_title")
+	@NotNull
+	@Max(value = 30)
 	private String title;
 	
 	@Column(name = "episode_link")
+	@NotNull
 	private String link;
+	
+	@Column(name = "episode_desc")
+	@NotNull
+	@Max(value = 300)
+	private String desc;
 	
 	@Column(name = "upload_data")
 	private Date date;
 	
-	
 	public int getId() {
-		return Id;
+		return id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -52,14 +61,21 @@ public class Episode {
 		this.date = date;
 	}
 	
-	public Episode(String title, String link, Date date) {
+	public Episode(String title, String link,String desc, Date date) {
 		this.title = title;
 		this.link = link;
+		this.desc = desc;
 		this.date = date;
 	}
 	
 	public Episode() {
-		
+		this.date = new Date();
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 	
 	

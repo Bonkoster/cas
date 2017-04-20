@@ -63,5 +63,23 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 			sess.close();
 		}
 	}
+
+	public Episode getEpisode(int id) {
+		
+		Episode eps = null;
+		Session sess = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = sess.beginTransaction();
+			eps = sess.load(Episode.class, id);
+		} catch (Exception e) {
+			tx.rollback();
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		
+		return eps;
+	}
 	
 }

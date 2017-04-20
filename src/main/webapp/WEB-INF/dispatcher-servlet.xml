@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 <mvc:annotation-driven/>
-<mvc:resources mapping="/resources/**" location="/resources/"></mvc:resources>
+<mvc:resources mapping="resources/**" location="resources/"></mvc:resources>
 <context:component-scan base-package="com.bascon"/>
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

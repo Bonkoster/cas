@@ -8,9 +8,11 @@ import com.model.Episode;
 
 public interface EpisodeService {
 	
-	public List<Episode> listComments();
+	public List<Episode> listEpisode();
 	
-	public void addComment(Episode episode);
+	public void addEpisode(Episode episode);
 	
-	public void deleteComment(int id);
+	public void deleteEpisode(int id);
+	
+	public Episode getEpisode (int id);
 }

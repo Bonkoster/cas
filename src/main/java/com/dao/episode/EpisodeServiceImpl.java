@@ -8,17 +8,21 @@ public class EpisodeServiceImpl implements EpisodeService {
 
 	EpisodeDAOImpl epDAO = new EpisodeDAOImpl();
 	
-	public List<Episode> listComments() {
+	public List<Episode> listEpisode() {
 		return epDAO.getAllEpisodes();
 	}
 
-	public void addComment(Episode episode) {
+	public void addEpisode(Episode episode) {
 		epDAO.addEpisode(episode);
 		
 	}
 
-	public void deleteComment(int id) {
+	public void deleteEpisode(int id) {
 		epDAO.deleteEpisode(id);		
+	}
+
+	public Episode getEpisode(int id) {
+		return epDAO.getEpisode(id);
 	}
 
 }
