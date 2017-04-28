@@ -2,7 +2,9 @@ package com.bascon;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -60,6 +62,8 @@ public class HelloController {
 	@RequestMapping(value = "/playNexus", method = RequestMethod.GET)
 	public ModelAndView PlayNexus(){
 		ModelAndView md = new ModelAndView("Nexus");
+		
+		Comment come = new Comment();
 		
 		String title = "Çהוסü גû למזועü סûדנאעü ג Madness Project Nexus";
 		
@@ -139,14 +143,20 @@ public class HelloController {
 	}
 	
 	@RequestMapping(value = "/addComment", method = RequestMethod.POST)
-	public String addComment(@Validated @ModelAttribute("comment") Comment comment, BindingResult result, ModelMap model ){
+	public String addComment(@Validated @ModelAttribute("comment") Comment comment, BindingResult result, ModelMap model ) throws UnsupportedEncodingException{
 		
 		model.addAttribute("author", comment.getAuthor());
 		model.addAttribute("content", comment.getContent());
 		
+		String mel = new String(comment.getAuthor().getBytes("ISO-8859-1"), "UTF-8");
+		String mec = new String(comment.getContent().getBytes("ISO-8859-1"), "UTF-8");
+		
+		comment.setAuthor(mel); 
+		comment.setContent(mec);
+		
 		commentService.addComment(comment);
 		
-		return "redirect:/comments";
+		return "redirect:/comments/1";
 	}
 	
 	@RequestMapping(value = "/comments/{id}")

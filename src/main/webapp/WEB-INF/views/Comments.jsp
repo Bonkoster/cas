@@ -24,14 +24,15 @@
 </div>
 </div>
 </c:forEach>
-<div>
-<a href="/cas/comments/1">1</a>
-<a href="/cas/comments/${pages}">${pages}</>
+<div >
+<a href="/cas/comments/1" class="pagina">1</a>
+<c:if test="${pages>2}"></c:if>
+<a href="/cas/comments/${pages}" class="pagina">${pages}</a>
 </div>
 
 <div align="left" class="contentmain">
- <form:form action="/cas/addComment" method="POST" modelAttribute="comment" class="divbor">
- 	<table >
+ <form:form action="/cas/addComment" method="POST" modelAttribute="comment" class="divbor" >
+ 	<table>
  		<tr>
  			<td><form:label path="author" >Автор:</form:label></td>
  			<td><form:input path="author" size="95px" cssClass="fieldBack" /></td>

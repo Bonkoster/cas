@@ -54,9 +54,26 @@ body {
 	
 }	
 
+.pagina {
+	background-color: #111312;
+	padding: 6px;
+	margin: 1px;
+	color: #ff8080;
+	border: 1px solid ;
+	border-color: #ff8080;
+}
+
+.pagina:hover {
+	color: red;
+	font-style: normal;
+	text-decoration: none;
+	border-color: red;
+}
+
 .fieldBack {
 	background-color: black;
 	color: gray;
 	margin: 4px;
 	resize: none;
+	size: inherit;
 }
