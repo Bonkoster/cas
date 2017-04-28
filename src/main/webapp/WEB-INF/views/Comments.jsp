@@ -9,7 +9,7 @@
 <div align="center">
 <div class="commentmain">
 <c:forEach items="${comments }" var="comment">
-<div class="commentcontent">
+<div class="commentcontent divbor" >
 <div align="left" class="comment">
 <c:out value="${comment.author} Написал:">
 </c:out>
@@ -24,20 +24,24 @@
 </div>
 </div>
 </c:forEach>
+<div>
+<a href="/cas/comments/1">1</a>
+<a href="/cas/comments/${pages}">${pages}</>
+</div>
 
-<div align="left">
- <form:form action="/cas/addComment" method="POST" modelAttribute="comment" >
+<div align="left" class="contentmain">
+ <form:form action="/cas/addComment" method="POST" modelAttribute="comment" class="divbor">
  	<table >
  		<tr>
- 			<td><form:label path="author" >Author:</form:label></td>
- 			<td><form:input path="author"/></td>
+ 			<td><form:label path="author" >Автор:</form:label></td>
+ 			<td><form:input path="author" size="95px" cssClass="fieldBack" /></td>
  		</tr>
  		<tr>
- 			<td><form:label path="content">Content:</form:label></td>
- 			<td><form:textarea path="content"/></td>
+ 			<td><form:label path="content">Содержание:</form:label></td>
+ 			<td><form:textarea path="content" cols="97px" rows="7px" cssClass="fieldBack" /></td>
  		</tr>
  		<tr>
- 			<td> <input type="submit" value="Post" class="btn btn-primary"></td>
+ 			<td> <input type="submit" value="${Post }" class="btn btn-primary" align="right"></td>
  		</tr>
  	</table>
  </form:form>

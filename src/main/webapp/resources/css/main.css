@@ -2,9 +2,14 @@
 
 .Astarot {
 	background: url("images/logo.jpg") no-repeat center top fixed;
-	width: 100%;
+	width: 99%;
 	height: 250px;
 	background-size: 50%;
+}
+
+.gameWidth {
+	width: 80%;
+	height: 100%;
 }
 
 body {
@@ -41,3 +46,17 @@ body {
 	visibility: collapse;
 }
 	
+.divbor {
+	border-radius: 10px;
+	background-color: #111312;
+	padding: 10px;
+	margin: 10px;
+	
+}	
+
+.fieldBack {
+	background-color: black;
+	color: gray;
+	margin: 4px;
+	resize: none;
+}

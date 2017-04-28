@@ -11,8 +11,8 @@ public class CommentServiceImpl implements CommentService {
 	private CommentDAOImpl comDAO = new CommentDAOImpl();
 	
 	
-	public List<Comment> listComments() {
-		return comDAO.getAllComments();
+	public List<Comment> listComments(int page) {
+		return comDAO.getPageComments(page);
 	}
 
 	public void addComment(Comment com) {
@@ -23,6 +23,10 @@ public class CommentServiceImpl implements CommentService {
 	public void deleteComment(int id) {
 		comDAO.deleteComment(id);
 		
+	}
+
+	public long getCount() {
+		return comDAO.getCount();
 	}
 
 }

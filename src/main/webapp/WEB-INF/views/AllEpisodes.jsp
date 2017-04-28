@@ -8,13 +8,18 @@
 <body>
 	<div align="center">
 		<div class="episodemain">
+		<table>
 			<c:forEach items="${episodes }" var="episo">
 			<div>
-			<a href="/cas/watchEpisode/${episo.id}">${episo.title }</a><br>
-			<label >${episo.desc }</label>
+			<tr>
+				<td class="divbor"><a href="/cas/watchEpisode/${episo.id}">${episo.title }</a><br></td>
+			</tr>
 			</div>
 			</c:forEach>
+		</table>
 		</div>
 	</div>
 </body>
 </html>
+
+			<label >${episo.desc }</label>

@@ -9,7 +9,9 @@ import com.model.Episode;
 
 public interface CommentDAO {
 	
-	public List<Comment> getAllComments();
+	public long getCount();
+	
+	public List<Comment> getPageComments(int page);
 	
 	public void addComment(Comment com);
 	

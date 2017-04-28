@@ -6,9 +6,11 @@ import com.model.Comment;
 
 public interface CommentService {
 
-	public List<Comment> listComments();
+	public List<Comment> listComments(int page);
 	
 	public void addComment(Comment com);
 	
 	public void deleteComment(int id);
+	
+	public long getCount();
 }

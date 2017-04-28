@@ -6,8 +6,8 @@
 </head>
 <body>
 	<div align="center">
-	<h1>${episode.title}</h1>
-	<iframe height="400" width="600" frameborder="0" src="${episode.link }" allowfullscreen>
+	<h1 class="divbor">${episode.title}</h1>
+	<iframe height="400" width="600" frameborder="0" src="${episode.link }" allowfullscreen class="divbor">
 	Your internet browser is not support frames
 	</iframe>
 	</div>

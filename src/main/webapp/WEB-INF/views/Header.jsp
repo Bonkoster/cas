@@ -10,13 +10,14 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<div class="Astarot"></div>
-		<div id="navbarCollapse" class="collapse navbar-collapse darkTheme">
+<div class="Astarot divbor"></div>
+		<div id="navbarCollapse" class="collapse navbar-collapse darkTheme divbor">
     		<ul class="nav navbar-nav">
-      			<li><a href="/cas/hello">Главная страница</a></li>
+      			<li><a href="/cas/">Главная страница</a></li>
       			<li><a href="/cas/getSeries">Все серии</a></li>
-      			<li><a href="/cas/comments">Отзывы</a></li>
-      			<li><a  class="secretfunc" href="/cas/addEpisode">Добавить серию</a> </li>
+      			<li><a href="/cas/comments/1">Отзывы</a></li>
+      			<li><a href="/cas/playNexus">Играть в Project Nexus </a></li>
+      			<li><a href="/cas/addEpisode">Добавить серию</a></li>
     		</ul>
   		</div>
  </header>

@@ -9,6 +9,7 @@ import javax.servlet.ServletContext;
 
 import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
@@ -29,6 +30,7 @@ import com.dao.comment.CommentServiceImpl;
 import com.dao.episode.EpisodeServiceImpl;
 import com.model.Comment;
 import com.model.Episode;
+import com.validation.EpisodeValidation;
 
 @Controller
 public class HelloController {
@@ -36,6 +38,8 @@ public class HelloController {
 	@Autowired
 	ServletContext context;
 	
+	@Autowired
+	EpisodeValidation epsiodeValidator;
 	
 	CommentServiceImpl commentService = new CommentServiceImpl();
 	EpisodeServiceImpl episodeService = new EpisodeServiceImpl();
@@ -46,9 +50,23 @@ public class HelloController {
 		
 		String rick = "https://www.youtube.com/embed/39WSv4SMJHQ";		
 		
-		String title = "Welcome to my Special site About Madness Combat";
+		String title = "Добро пожаловать на мой сайт о Madness Combat";
 		md.addObject("title", title);
 		md.addObject("rick",rick);
+		
+		return md;
+	}
+	
+	@RequestMapping(value = "/playNexus", method = RequestMethod.GET)
+	public ModelAndView PlayNexus(){
+		ModelAndView md = new ModelAndView("Nexus");
+		
+		String title = "Здесь вы можеть сыграть в Madness Project Nexus";
+		
+		String link = "http://www.newgrounds.com/portal/view/592473";
+		
+		md.addObject("title", title);
+		md.addObject("link",link);
 		
 		return md;
 	}
@@ -56,12 +74,22 @@ public class HelloController {
 	@RequestMapping(value = "/addEpisode", method = RequestMethod.GET)
 	public ModelAndView AddEpisode(){
 		ModelAndView md = new ModelAndView("AddEpisode");
-		String title = "Add new Episode here";
+		String title = "Добавить новый эпизод";
+		String but = "Загрузить";
+		
+		
+		String titlePlac = "Write title of the Episode here";
+		String linkPlac = "Write link it must contain https://www.youtube.com/embed/";
+		String descPlac = "Write description here";
 		
 		Episode episode = new Episode();
 		
 		md.addObject("episode",episode);
 		md.addObject("title",title);
+		md.addObject("titlePlac", titlePlac);
+		md.addObject("linkPlac", linkPlac);
+		md.addObject("descPlac", descPlac);
+		md.addObject("butto",but);
 		
 		return md;
 	}
@@ -73,15 +101,21 @@ public class HelloController {
 		map.addAttribute("link",episode.getLink());
 		map.addAttribute("desc",episode.getDesc());
 		
+		epsiodeValidator.validate(episode, result);
+		if(result.hasErrors()){
+			return "redirect:/addEpisode";
+		} else {
+			
 		episodeService.addEpisode(episode);
 		
 		return "redirect:/getSeries";
+		}
 	}
 	
 	@RequestMapping(value = "/getSeries")
 	public ModelAndView GetSeries(){
 		ModelAndView md = new ModelAndView("AllEpisodes");
-		String title = "You can watch Madness Combat episodes here";
+		String title = "Вы можеть смотреть сериал Madness Combat здесь";
 		
 		List<Episode> eps = episodeService.listEpisode();
 		
@@ -115,20 +149,27 @@ public class HelloController {
 		return "redirect:/comments";
 	}
 	
-	@RequestMapping(value = "/comments")
-	public ModelAndView Commentaries(){
+	@RequestMapping(value = "/comments/{id}")
+	public ModelAndView Commentaries(@PathVariable int id){
 		ModelAndView md = new ModelAndView("Comments");
-		String title = "You can post your comment Here";		
+		String title = "Оставьте отзыв";		
+		String post = "Отправить";
 		
-		List<Comment> coms = commentService.listComments();
+		long count = commentService.getCount();
 		
+		long pages = count / 5 + 1;
+		
+				
+		List<Comment> coms = commentService.listComments(id);
+				
 		Comment comment = new Comment();
 		
 		md.addObject("comment", comment);
 		
 		md.addObject("comments",coms);
-		
 		md.addObject("title",title);
+		md.addObject("Post",post);
+		md.addObject("pages", pages);		
 		
 		return md;
 	}

@@ -43,13 +43,23 @@ public class CommentDAOImpl implements CommentDAO {
 	public static SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Comment.class).buildSessionFactory();
 	
 
-	public List<Comment> getAllComments() {
+	public List<Comment> getPageComments(int page) {
+		int first = 0;
+		
+		for (int i=1;i<page;i++) {
+			first = first + 5;
+		}
+		
 		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		List<Comment> coms = new ArrayList<Comment>();
 		try {
 			tx = sess.beginTransaction();
-			coms = sess.createQuery("FROM Comment").list();
+			Query query = sess.createQuery("FROM Comment");
+			query.setFirstResult(first);
+			query.setMaxResults(5);
+			coms = query.getResultList();
+			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
 			e.printStackTrace();
@@ -90,6 +100,23 @@ public class CommentDAOImpl implements CommentDAO {
 		} finally {
 			sess.close();
 		}
+	}
+
+	public long getCount() {
+		
+		long i = 0;
+		Session sess = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = sess.beginTransaction();
+			i =  (Long) sess.createQuery("select count(*) from Comment").uniqueResult(); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		
+		return i;
 	}
 
 }
