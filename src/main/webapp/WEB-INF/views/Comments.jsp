@@ -26,7 +26,9 @@
 </c:forEach>
 <div >
 <a href="/cas/comments/1" class="pagina">1</a>
-<c:if test="${pages>2}"></c:if>
+<c:forEach step="1" begin="2" end="${pages - 1}" var="i">
+<a href="/cas/comments/${i}" class="pagina">${i}</a>
+</c:forEach>
 <a href="/cas/comments/${pages}" class="pagina">${pages}</a>
 </div>
 

@@ -82,9 +82,9 @@ public class HelloController {
 		String but = "Загрузить";
 		
 		
-		String titlePlac = "Write title of the Episode here";
-		String linkPlac = "Write link it must contain https://www.youtube.com/embed/";
-		String descPlac = "Write description here";
+		String titlePlac = "Напишите название файла здесь";
+		String linkPlac = "Ссылка должна содержать https://www.youtube.com/embed/";
+		String descPlac = "Введите описание здесь";
 		
 		Episode episode = new Episode();
 		
@@ -99,7 +99,7 @@ public class HelloController {
 	}
 	
 	@RequestMapping(value = "/addEpisodeAction", method = RequestMethod.POST)
-	public String addEpisodeAction(@Validated @ModelAttribute("episode") Episode episode, BindingResult result ,ModelMap map){
+	public String addEpisodeAction(@Validated @ModelAttribute("episode") Episode episode, BindingResult result ,ModelMap map) throws UnsupportedEncodingException{
 		
 		map.addAttribute("title", episode.getTitle());
 		map.addAttribute("link",episode.getLink());
@@ -109,6 +109,14 @@ public class HelloController {
 		if(result.hasErrors()){
 			return "redirect:/addEpisode";
 		} else {
+			
+			String mel = new String(episode.getTitle().getBytes("ISO-8859-1"), "UTF-8");
+			String mec = new String(episode.getLink().getBytes("ISO-8859-1"), "UTF-8");
+			String mev = new String(episode.getDesc().getBytes("ISO-8859-1"), "UTF-8");
+			
+			episode.setTitle(mel);
+			episode.setLink(mec);
+			episode.setDesc(mev);
 			
 		episodeService.addEpisode(episode);
 		
