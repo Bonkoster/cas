@@ -18,6 +18,7 @@
       			<li><a href="/cas/comments/1">Отзывы</a></li>
       			<li><a href="/cas/playNexus">Играть в Project Nexus </a></li>
       			<li><a href="/cas/addEpisode">Добавить серию</a></li>
+      			<li><a href="/cas/galery">Добавить картину в галерею</a> </li>
     		</ul>
   		</div>
  </header>

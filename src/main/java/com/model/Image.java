@@ -30,7 +30,7 @@ public class Image {
 	private Date date;	
 	
 	public Image() {
-		
+		this.date = new Date();
 	}
 	
 	

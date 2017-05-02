@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,7 @@ import com.dao.episode.EpisodeServiceImpl;
 import com.dao.image.ImageServiceImpl;
 import com.model.Comment;
 import com.model.Episode;
+import com.model.Image;
 import com.validation.EpisodeValidation;
 
 @Controller
@@ -198,5 +200,36 @@ public class HelloController {
 		return md;
 	}
 	
+	@RequestMapping(value = "/galery")
+	public ModelAndView Gallery(){
+		ModelAndView md = new ModelAndView("Gallery");
+		
+		Image image = new Image();
+		
+		String title = "Посмотрите галлерею";
+		
+		md.addObject("title",title);
+		md.addObject("image",image);
+		
+		return md;
+	}
+	
+	@RequestMapping(path = "/addImage", method = RequestMethod.POST)
+	public String addImage(@Validated @ModelAttribute Image image, ModelMap map) throws IOException{
+		
+		MultipartFile mpfile = null;
+		map.addAttribute("title",image.getTitle());
+		map.addAttribute("mpfile",mpfile);
+		
+		byte[] filecont = null;
+		
+		if (mpfile != null) {
+			filecont = mpfile.getBytes();
+			imageService.addImage(image);
+			return "redirect:/galery";
+		}
+		
+		return "redirect:/galery";
+	}
 }
 
