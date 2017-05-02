@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dao.comment.CommentService;
 import com.dao.comment.CommentServiceImpl;
 import com.dao.episode.EpisodeServiceImpl;
+import com.dao.image.ImageServiceImpl;
 import com.model.Comment;
 import com.model.Episode;
 import com.validation.EpisodeValidation;
@@ -45,6 +46,7 @@ public class HelloController {
 	
 	CommentServiceImpl commentService = new CommentServiceImpl();
 	EpisodeServiceImpl episodeService = new EpisodeServiceImpl();
+	ImageServiceImpl imageService = new ImageServiceImpl();
 		
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView Welcome(){
@@ -105,10 +107,10 @@ public class HelloController {
 		map.addAttribute("link",episode.getLink());
 		map.addAttribute("desc",episode.getDesc());
 		
-		epsiodeValidator.validate(episode, result);
+		/*epsiodeValidator.validate(episode, result);
 		if(result.hasErrors()){
 			return "redirect:/addEpisode";
-		} else {
+		} else {}*/
 			
 			String mel = new String(episode.getTitle().getBytes("ISO-8859-1"), "UTF-8");
 			String mec = new String(episode.getLink().getBytes("ISO-8859-1"), "UTF-8");
@@ -121,16 +123,21 @@ public class HelloController {
 		episodeService.addEpisode(episode);
 		
 		return "redirect:/getSeries";
-		}
+		
 	}
 	
-	@RequestMapping(value = "/getSeries")
+	@RequestMapping(value = "/getSeries/{id}")
 	public ModelAndView GetSeries(){
 		ModelAndView md = new ModelAndView("AllEpisodes");
 		String title = "Вы можеть смотреть сериал Madness Combat здесь";
 		
+		long count = episodeService.getCount();
+		
+		long pages = count / 5 + 1;
+		
 		List<Episode> eps = episodeService.listEpisode();
 		
+		md.addObject("pages",pages);
 		md.addObject("episodes",eps);
 		md.addObject("title",title);
 		
@@ -176,8 +183,7 @@ public class HelloController {
 		long count = commentService.getCount();
 		
 		long pages = count / 5 + 1;
-		
-				
+						
 		List<Comment> coms = commentService.listComments(id);
 				
 		Comment comment = new Comment();

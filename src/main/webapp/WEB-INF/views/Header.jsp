@@ -14,7 +14,7 @@
 		<div id="navbarCollapse" class="collapse navbar-collapse darkTheme divbor">
     		<ul class="nav navbar-nav">
       			<li><a href="/cas/">Главная страница</a></li>
-      			<li><a href="/cas/getSeries">Все серии</a></li>
+      			<li><a href="/cas/getSeries/1">Все серии</a></li>
       			<li><a href="/cas/comments/1">Отзывы</a></li>
       			<li><a href="/cas/playNexus">Играть в Project Nexus </a></li>
       			<li><a href="/cas/addEpisode">Добавить серию</a></li>

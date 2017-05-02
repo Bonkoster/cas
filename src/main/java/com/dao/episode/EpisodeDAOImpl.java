@@ -41,6 +41,7 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			tx.rollback();
 		} finally {
 			sess.close();
 		}
@@ -59,6 +60,7 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			tx.rollback();
 		} finally {
 			sess.close();
 		}
@@ -80,6 +82,21 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 		}
 		
 		return eps;
+	}
+
+	public long getCount() {		
+		Session sess = sessionFactory.openSession();
+		Transaction tx = null;
+		long i = 0;
+		try {
+			tx = sess.beginTransaction();
+			i = (Long) sess.createQuery("select count(*) from Episode").uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		return i;
 	}
 	
 }

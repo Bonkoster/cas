@@ -25,4 +25,9 @@ public class EpisodeServiceImpl implements EpisodeService {
 		return epDAO.getEpisode(id);
 	}
 
+	public long getCount() {
+		// TODO Auto-generated method stub
+		return epDAO.getCount();
+	}
+
 }

@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "episodes_table")
@@ -21,7 +23,7 @@ public class Episode {
 	
 	@Column(name = "episode_title")
 	@NotNull
-	@Max(value = 30)
+	@Size(min = 5, max = 30)
 	private String title;
 	
 	@Column(name = "episode_link")
@@ -30,7 +32,7 @@ public class Episode {
 	
 	@Column(name = "episode_desc")
 	@NotNull
-	@Max(value = 300)
+	@Size(min = 5, max = 300)
 	private String desc;
 	
 	@Column(name = "upload_data")

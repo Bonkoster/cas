@@ -15,4 +15,6 @@ public interface EpisodeService {
 	public void deleteEpisode(int id);
 	
 	public Episode getEpisode (int id);
+	
+	public long getCount();
 }
