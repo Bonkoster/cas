@@ -200,36 +200,36 @@ public class HelloController {
 		return md;
 	}
 	
-	@RequestMapping(value = "/galery")
-	public ModelAndView Gallery(){
-		ModelAndView md = new ModelAndView("Gallery");
-		
-		Image image = new Image();
-		
-		String title = "Посмотрите галлерею";
-		
-		md.addObject("title",title);
-		md.addObject("image",image);
-		
-		return md;
-	}
-	
-	@RequestMapping(path = "/addImage", method = RequestMethod.POST)
-	public String addImage(@Validated @ModelAttribute Image image, ModelMap map) throws IOException{
-		
-		MultipartFile mpfile = null;
-		map.addAttribute("title",image.getTitle());
-		map.addAttribute("mpfile",mpfile);
-		
-		byte[] filecont = null;
-		
-		if (mpfile != null) {
-			filecont = mpfile.getBytes();
-			imageService.addImage(image);
-			return "redirect:/galery";
-		}
-		
-		return "redirect:/galery";
-	}
+//	@RequestMapping(value = "/galery")
+//	public ModelAndView Gallery(){
+//		ModelAndView md = new ModelAndView("Gallery");
+//		
+//		Image image = new Image();
+//		
+//		String title = "Посмотрите галлерею";
+//		
+//		md.addObject("title",title);
+//		md.addObject("image",image);
+//		
+//		return md;
+//	}
+//	
+//	@RequestMapping(path = "/addImage", method = RequestMethod.POST)
+//	public String addImage(@Validated @ModelAttribute Image image, ModelMap map) throws IOException{
+//		
+//		MultipartFile mpfile = null;
+//		map.addAttribute("title",image.getTitle());
+//		map.addAttribute("mpfile",mpfile);
+//		
+//		byte[] filecont = null;
+//		
+//		if (mpfile != null) {
+//			filecont = mpfile.getBytes();
+//			imageService.addImage(image);
+//			return "redirect:/galery";
+//		}
+//		
+//		return "redirect:/galery";
+//	}
 }
 
