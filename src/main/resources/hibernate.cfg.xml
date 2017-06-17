@@ -16,5 +16,7 @@
   <property name="show_sql">true</property>
   <property name="hibernate.id.new_generator_mappings">false</property>
   <mapping class="com.model.Comment"/>
+  <mapping class="com.model.Image"/>
+  <mapping class="com.model.Episode"/>
  </session-factory>
 </hibernate-configuration>

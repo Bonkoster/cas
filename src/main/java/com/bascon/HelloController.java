@@ -3,12 +3,15 @@ package com.bascon;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
@@ -46,16 +49,19 @@ public class HelloController {
 	@Autowired
 	EpisodeValidation epsiodeValidator;
 	
+	private static final Logger logger = Logger.getLogger(HelloController.class);
+	
+	//Три сервиса для работы с базой данных
 	CommentServiceImpl commentService = new CommentServiceImpl();
 	EpisodeServiceImpl episodeService = new EpisodeServiceImpl();
 	ImageServiceImpl imageService = new ImageServiceImpl();
 		
+	//Приветственная страница
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView Welcome(){
 		ModelAndView md = new ModelAndView("Hello");
 		
-		String rick = "https://www.youtube.com/embed/39WSv4SMJHQ";		
-		
+		String rick = "https://www.youtube.com/embed/AqT-MJnbePM";		
 		String title = "Добро пожаловать на мой сайт о Madness Combat";
 		md.addObject("title", title);
 		md.addObject("rick",rick);
@@ -63,6 +69,7 @@ public class HelloController {
 		return md;
 	}
 	
+	//Игра в Project Nexus
 	@RequestMapping(value = "/playNexus", method = RequestMethod.GET)
 	public ModelAndView PlayNexus(){
 		ModelAndView md = new ModelAndView("Nexus");
@@ -70,7 +77,6 @@ public class HelloController {
 		Comment come = new Comment();
 		
 		String title = "Здесь вы можеть сыграть в Madness Project Nexus";
-		
 		String link = "http://www.newgrounds.com/portal/view/592473";
 		
 		md.addObject("title", title);
@@ -79,6 +85,7 @@ public class HelloController {
 		return md;
 	}
 	
+	//Форма с добавлением эпизодов
 	@RequestMapping(value = "/addEpisode", method = RequestMethod.GET)
 	public ModelAndView AddEpisode(){
 		ModelAndView md = new ModelAndView("AddEpisode");
@@ -102,6 +109,7 @@ public class HelloController {
 		return md;
 	}
 	
+	//Метод POST, добавляющий эпизод
 	@RequestMapping(value = "/addEpisodeAction", method = RequestMethod.POST)
 	public String addEpisodeAction(@Validated @ModelAttribute("episode") Episode episode, BindingResult result ,ModelMap map) throws UnsupportedEncodingException{
 		
@@ -128,6 +136,7 @@ public class HelloController {
 		
 	}
 	
+	//Список эпизодов
 	@RequestMapping(value = "/getSeries/{id}")
 	public ModelAndView GetSeries(){
 		ModelAndView md = new ModelAndView("AllEpisodes");
@@ -146,6 +155,7 @@ public class HelloController {
 		return md;
 	}
 	
+	//Просмотр эпизодов
 	@RequestMapping(path = "/watchEpisode/{id}")
 	public ModelAndView watchEpisode(@PathVariable int id){
 		ModelAndView md = new ModelAndView("WatchEpisode");
@@ -159,6 +169,7 @@ public class HelloController {
 		return md;
 	}
 	
+	//Метод POST добавления комметариев
 	@RequestMapping(value = "/addComment", method = RequestMethod.POST)
 	public String addComment(@Validated @ModelAttribute("comment") Comment comment, BindingResult result, ModelMap model ) throws UnsupportedEncodingException{
 		
@@ -167,7 +178,6 @@ public class HelloController {
 		
 		String mel = new String(comment.getAuthor().getBytes("ISO-8859-1"), "UTF-8");
 		String mec = new String(comment.getContent().getBytes("ISO-8859-1"), "UTF-8");
-		
 		comment.setAuthor(mel); 
 		comment.setContent(mec);
 		
@@ -176,6 +186,7 @@ public class HelloController {
 		return "redirect:/comments/1";
 	}
 	
+	//Список комметариев
 	@RequestMapping(value = "/comments/{id}")
 	public ModelAndView Commentaries(@PathVariable int id){
 		ModelAndView md = new ModelAndView("Comments");
@@ -200,36 +211,33 @@ public class HelloController {
 		return md;
 	}
 	
-//	@RequestMapping(value = "/galery")
-//	public ModelAndView Gallery(){
-//		ModelAndView md = new ModelAndView("Gallery");
-//		
-//		Image image = new Image();
-//		
-//		String title = "Посмотрите галлерею";
-//		
-//		md.addObject("title",title);
-//		md.addObject("image",image);
-//		
-//		return md;
-//	}
-//	
-//	@RequestMapping(path = "/addImage", method = RequestMethod.POST)
-//	public String addImage(@Validated @ModelAttribute Image image, ModelMap map) throws IOException{
-//		
-//		MultipartFile mpfile = null;
-//		map.addAttribute("title",image.getTitle());
-//		map.addAttribute("mpfile",mpfile);
-//		
-//		byte[] filecont = null;
-//		
-//		if (mpfile != null) {
-//			filecont = mpfile.getBytes();
-//			imageService.addImage(image);
-//			return "redirect:/galery";
-//		}
-//		
-//		return "redirect:/galery";
-//	}
+	//Доступ к галерее (В разработке)
+	@RequestMapping(value = "/galery")
+	public ModelAndView Gallery(){
+		ModelAndView md = new ModelAndView("Gallery");
+		
+		Image image = new Image();
+		
+		String title2 = "Посмотрите галерею";
+		String butto = "Загрузить картинку";
+		
+		md.addObject("butto", butto);
+		md.addObject("title2",title2);
+		md.addObject("image",image);
+		
+		return md;
+	}
+	
+	//Добавление изображений (В разработке)
+	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
+	public String addImage(@Validated @ModelAttribute("image") Image image, ModelMap map, BindingResult result ) throws IOException{
+		
+		map.addAttribute("title", image.getTitle());
+		map.addAttribute("file", image.getFile());
+		
+		
+		imageService.addImage(image);
+		return "redirect:/galery";
+	}
 }
 

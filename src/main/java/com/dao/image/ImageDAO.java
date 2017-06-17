@@ -2,13 +2,15 @@ package com.dao.image;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.model.Image;
 
 public interface ImageDAO {
 
 	public List<Image> getGallery();
 	
-	public void addImage(Image image);
+	public void addImage(Image file);
 	
 	public void deleteimage(int id);
 	

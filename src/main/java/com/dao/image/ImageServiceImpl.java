@@ -2,6 +2,8 @@ package com.dao.image;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.model.Image;
 
 public class ImageServiceImpl implements ImageService {
@@ -13,8 +15,8 @@ public class ImageServiceImpl implements ImageService {
 		return ima;
 	}
 
-	public void addImage(Image ima) {
-		im.addImage(ima);
+	public void addImage(Image file) {
+		im.addImage(file);
 		
 	}
 

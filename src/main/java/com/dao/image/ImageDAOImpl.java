@@ -1,12 +1,15 @@
 package com.dao.image;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.model.Episode;
 import com.model.Image;
@@ -15,15 +18,13 @@ public class ImageDAOImpl implements ImageDAO {
 	
 	SessionFactory sessionfactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Image.class).buildSessionFactory();
 
-	public List<Image> getGallery() {
-		
+	public List<Image> getGallery() {		
 		Session sess = sessionfactory.openSession();
 		Transaction tx = null;
 		List<Image> images = new ArrayList<Image>();
 		
 		try {
 			tx = sess.beginTransaction();
-			tx.begin();
 			images = sess.createQuery("from Image").list();
 			tx.commit();
 		} catch (Exception e) {
@@ -36,13 +37,12 @@ public class ImageDAOImpl implements ImageDAO {
 		return images;
 	}
 
-	public void addImage(Image image) {
+	public void addImage(Image file) {
 		Session sess = sessionfactory.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			tx.begin();
-			sess.save(image);
+			sess.save(file);
 			tx.commit();						
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,7 +58,6 @@ public class ImageDAOImpl implements ImageDAO {
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			tx.begin();
 			Image im = sess.load(Image.class, id);
 			if (im != null) {
 				sess.delete(im);

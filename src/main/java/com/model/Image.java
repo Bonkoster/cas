@@ -1,13 +1,19 @@
 package com.model;
 
+import java.io.File;
+import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "gallery_table")
@@ -24,7 +30,7 @@ public class Image {
 	
 	@NotNull
 	@Column(name = "image_file")
-	private byte[] file;
+	private String file;
 	
 	@Column(name = "image_date")
 	private Date date;	
@@ -32,8 +38,11 @@ public class Image {
 	public Image() {
 		this.date = new Date();
 	}
-	
-	
+		
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Image(String title, Date date) {
 		this.title = title;
 		this.file = null;
@@ -48,11 +57,11 @@ public class Image {
 		this.title = title;
 	}
 	
-	public byte[] getFile() {
+	public String getFile() {
 		return file;
 	}
 	
-	public void setFile(byte[] file) {
+	public void setFile(String file) {
 		this.file = file;
 	}
 	
