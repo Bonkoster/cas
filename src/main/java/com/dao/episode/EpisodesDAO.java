@@ -6,7 +6,7 @@ import com.model.Episode;
 
 public interface EpisodesDAO {
 	
-	public List<Episode> getAllEpisodes();
+	public List<Episode> getAllEpisodes(int page);
 	
 	public void addEpisode(Episode episode);
 	

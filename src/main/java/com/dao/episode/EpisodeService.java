@@ -8,7 +8,7 @@ import com.model.Episode;
 
 public interface EpisodeService {
 	
-	public List<Episode> listEpisode();
+	public List<Episode> listEpisode(int page);
 	
 	public void addEpisode(Episode episode);
 	

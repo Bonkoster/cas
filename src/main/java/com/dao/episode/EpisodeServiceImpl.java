@@ -8,8 +8,8 @@ public class EpisodeServiceImpl implements EpisodeService {
 
 	EpisodeDAOImpl epDAO = new EpisodeDAOImpl();
 	
-	public List<Episode> listEpisode() {
-		return epDAO.getAllEpisodes();
+	public List<Episode> listEpisode(int page) {
+		return epDAO.getAllEpisodes(page);
 	}
 
 	public void addEpisode(Episode episode) {

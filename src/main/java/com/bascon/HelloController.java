@@ -138,15 +138,15 @@ public class HelloController {
 	
 	//Список эпизодов
 	@RequestMapping(value = "/getSeries/{id}")
-	public ModelAndView GetSeries(){
+	public ModelAndView GetSeries(@PathVariable int id){
 		ModelAndView md = new ModelAndView("AllEpisodes");
 		String title = "Вы можеть смотреть сериал Madness Combat здесь";
 		
 		long count = episodeService.getCount();
 		
-		long pages = count / 5 + 1;
+		long pages = count / 10 + 1;
 		
-		List<Episode> eps = episodeService.listEpisode();
+		List<Episode> eps = episodeService.listEpisode(id);
 		
 		md.addObject("pages",pages);
 		md.addObject("episodes",eps);

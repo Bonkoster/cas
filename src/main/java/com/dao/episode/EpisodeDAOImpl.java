@@ -3,6 +3,8 @@ package com.dao.episode;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,13 +17,23 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 
 	SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Episode.class).buildSessionFactory();
 	
-	public List<Episode> getAllEpisodes() {
+	public List<Episode> getAllEpisodes(int page) {
+		
+		int first = 0;
+		
+		for (int i=1;i<page;i++) {
+			first = first + 10;
+		}
+		
 		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		List<Episode> eps = new ArrayList<Episode>();
 		try {
 			tx = sess.beginTransaction();
-			eps = sess.createQuery("from Episode").list();
+			Query query = sess.createQuery("FROM Episode");
+			query.setFirstResult(first);
+			query.setMaxResults(10);
+			eps = query.getResultList();
 		} catch (Exception e) {
 			tx.rollback();
 			e.printStackTrace();
