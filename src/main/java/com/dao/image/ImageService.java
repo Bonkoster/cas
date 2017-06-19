@@ -8,7 +8,7 @@ import com.model.Image;
 
 public interface ImageService {
 
-	public List<Image> getGallery();
+	public List<Image> getGallery(int page);
 	
 	public void addImage(Image file);
 	

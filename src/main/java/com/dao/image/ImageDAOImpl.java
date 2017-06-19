@@ -4,6 +4,8 @@ import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,23 +20,29 @@ public class ImageDAOImpl implements ImageDAO {
 	
 	SessionFactory sessionfactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Image.class).buildSessionFactory();
 
-	public List<Image> getGallery() {		
+	public List<Image> getGallery(int page) {		
+		int first = 0;
+		
+		for (int i=1;i<page;i++) {
+			first = first + 10;
+		}
+		
 		Session sess = sessionfactory.openSession();
 		Transaction tx = null;
-		List<Image> images = new ArrayList<Image>();
-		
+		List<Image> imgs = new ArrayList<Image>();
 		try {
 			tx = sess.beginTransaction();
-			images = sess.createQuery("from Image").list();
-			tx.commit();
+			Query query = sess.createQuery("FROM Image");
+			query.setFirstResult(first);
+			query.setMaxResults(20);
+			imgs = query.getResultList();
 		} catch (Exception e) {
-			e.printStackTrace();
 			tx.rollback();
+			e.printStackTrace();
 		} finally {
 			sess.close();
 		}
-		
-		return images;
+		return imgs;
 	}
 
 	public void addImage(Image file) {

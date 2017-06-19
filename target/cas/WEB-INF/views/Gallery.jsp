@@ -14,7 +14,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="file" >Картинку сюда:</form:label></td>
-				<td><input type="file" name="file" id="file" /></td>
+				<td><form:input path="file" size="100" cssClass="fieldBack"></form:input></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="${butto}" class="btn btn-primary"  ></td>

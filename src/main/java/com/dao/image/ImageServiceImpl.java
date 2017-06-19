@@ -10,8 +10,8 @@ public class ImageServiceImpl implements ImageService {
 
 	ImageDAOImpl im = new ImageDAOImpl();
 	
-	public List<Image> getGallery() {
-		List<Image> ima = im.getGallery();
+	public List<Image> getGallery(int page) {
+		List<Image> ima = im.getGallery(page);
 		return ima;
 	}
 

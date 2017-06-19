@@ -77,3 +77,14 @@ body {
 	resize: none;
 	size: inherit;
 }
+
+.imgSize {
+	width: 320px;
+	height: 250px;
+	padding: 10px 10px;
+}
+
+.imgPagin {
+	text-align: center;
+	padding: 10px 0px;
+}

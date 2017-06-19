@@ -194,15 +194,13 @@ public class HelloController {
 		String post = "Отправить";
 		
 		long count = commentService.getCount();
-		
 		long pages = count / 5 + 1;
 						
 		List<Comment> coms = commentService.listComments(id);
 				
 		Comment comment = new Comment();
 		
-		md.addObject("comment", comment);
-		
+		md.addObject("comment", comment);		
 		md.addObject("comments",coms);
 		md.addObject("title",title);
 		md.addObject("Post",post);
@@ -212,11 +210,18 @@ public class HelloController {
 	}
 	
 	//Доступ к галерее (В разработке)
-	@RequestMapping(value = "/galery")
-	public ModelAndView Gallery(){
+	@RequestMapping(value = "/galery/{id}")
+	public ModelAndView Gallery(@PathVariable int id){
 		ModelAndView md = new ModelAndView("Gallery");
 		
 		Image image = new Image();
+		
+		long count = commentService.getCount();
+		long pages = count / 20 + 1;
+		
+		List<Image> images = new ArrayList<Image>();
+		
+		images = imageService.getGallery(id);
 		
 		String title2 = "Посмотрите галерею";
 		String butto = "Загрузить картинку";
@@ -224,6 +229,8 @@ public class HelloController {
 		md.addObject("butto", butto);
 		md.addObject("title2",title2);
 		md.addObject("image",image);
+		md.addObject("images",images);
+		md.addObject("pages",pages);
 		
 		return md;
 	}
@@ -237,7 +244,7 @@ public class HelloController {
 		
 		
 		imageService.addImage(image);
-		return "redirect:/galery";
+		return "redirect:/galery/1";
 	}
 }
 

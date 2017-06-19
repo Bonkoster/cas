@@ -31,7 +31,6 @@
 </c:forEach>
 <a href="/cas/comments/${pages}" class="pagina">${pages}</a>
 </div>
-
 <div align="left" class="contentmain">
  <form:form action="/cas/addComment" method="POST" modelAttribute="comment" class="divbor" >
  	<table>
