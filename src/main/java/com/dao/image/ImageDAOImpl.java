@@ -24,7 +24,7 @@ public class ImageDAOImpl implements ImageDAO {
 		int first = 0;
 		
 		for (int i=1;i<page;i++) {
-			first = first + 10;
+			first = first + 20;
 		}
 		
 		Session sess = sessionfactory.openSession();

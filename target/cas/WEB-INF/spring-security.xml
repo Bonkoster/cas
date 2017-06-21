@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="springSecurityFilterChain" class="javax.servlet.Filter"></bean>
+	
+	<sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:user-service>
+			<sec:user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
+			<sec:user name="bob" password="bobspassword" authorities="ROLE_USER" />
+			</sec:user-service>
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+	
+	<sec:http pattern="/" security="none"/>
+	
+	<sec:http >
+		<sec:intercept-url pattern="/addEpisode" access="hasRole('ADMIN')"/>
+		<sec:form-login/>
+		<sec:logout/>
+	</sec:http>
+</beans>

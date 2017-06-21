@@ -1,0 +1,7 @@
+CREATE TABLE `gallery_table` (
+  `image_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image_title` varchar(100) NOT NULL,
+  `image_file` longblob NOT NULL,
+  `image_date` date DEFAULT NULL,
+  PRIMARY KEY (`image_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

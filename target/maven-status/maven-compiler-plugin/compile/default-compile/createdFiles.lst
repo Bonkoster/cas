@@ -1,0 +1,17 @@
+com\dao\comment\CommentDAO.class
+com\dao\episode\EpisodeDAOImpl.class
+com\validation\EpisodeValidation.class
+com\dao\episode\EpisodeServiceImpl.class
+com\model\Comment.class
+com\dao\episode\EpisodesDAO.class
+com\dao\image\ImageDAO.class
+com\model\Episode.class
+com\dao\image\ImageDAOImpl.class
+com\dao\comment\CommentService.class
+com\dao\image\ImageServiceImpl.class
+com\dao\comment\CommentDAOImpl.class
+com\dao\image\ImageService.class
+com\model\Image.class
+com\dao\episode\EpisodeService.class
+com\bascon\HelloController.class
+com\dao\comment\CommentServiceImpl.class
