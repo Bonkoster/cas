@@ -132,7 +132,7 @@ public class HelloController {
 			
 		episodeService.addEpisode(episode);
 		
-		return "redirect:/getSeries";
+		return "redirect:/getSeries/1";
 		
 	}
 	
