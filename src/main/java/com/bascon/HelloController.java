@@ -51,32 +51,32 @@ public class HelloController {
 	
 	private static final Logger logger = Logger.getLogger(HelloController.class);
 	
-	//Три сервиса для работы с базой данных
+	//РўСЂРё СЃРµСЂРІРёСЃР° РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С…
 	CommentServiceImpl commentService = new CommentServiceImpl();
 	EpisodeServiceImpl episodeService = new EpisodeServiceImpl();
 	ImageServiceImpl imageService = new ImageServiceImpl();
 		
-	//Приветственная страница
+	//РџСЂРёРІРµС‚СЃС‚РІРµРЅРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView Welcome(){
 		ModelAndView md = new ModelAndView("Hello");
 		
 		String rick = "https://www.youtube.com/embed/AqT-MJnbePM";		
-		String title = "Добро пожаловать на мой сайт о Madness Combat";
+		String title = "Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° РјРѕР№ СЃР°Р№С‚ Рѕ Madness Combat";
 		md.addObject("title", title);
 		md.addObject("rick",rick);
 		
 		return md;
 	}
 	
-	//Игра в Project Nexus
+	//РРіСЂР° РІ Project Nexus
 	@RequestMapping(value = "/playNexus", method = RequestMethod.GET)
 	public ModelAndView PlayNexus(){
 		ModelAndView md = new ModelAndView("Nexus");
 		
 		Comment come = new Comment();
 		
-		String title = "Здесь вы можеть сыграть в Madness Project Nexus";
+		String title = "Р—РґРµСЃСЊ РІС‹ РјРѕР¶РµС‚СЊ СЃС‹РіСЂР°С‚СЊ РІ Madness Project Nexus";
 		String link = "http://www.newgrounds.com/portal/view/592473";
 		
 		md.addObject("title", title);
@@ -85,17 +85,17 @@ public class HelloController {
 		return md;
 	}
 	
-	//Форма с добавлением эпизодов
+	//Р¤РѕСЂРјР° СЃ РґРѕР±Р°РІР»РµРЅРёРµРј СЌРїРёР·РѕРґРѕРІ
 	@RequestMapping(value = "/addEpisode", method = RequestMethod.GET)
 	public ModelAndView AddEpisode(){
 		ModelAndView md = new ModelAndView("AddEpisode");
-		String title = "Добавить новый эпизод";
-		String but = "Загрузить";
+		String title = "Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌРїРёР·РѕРґ";
+		String but = "Р—Р°РіСЂСѓР·РёС‚СЊ";
 		
 		
-		String titlePlac = "Напишите название файла здесь";
-		String linkPlac = "Ссылка должна содержать https://www.youtube.com/embed/";
-		String descPlac = "Введите описание здесь";
+		String titlePlac = "РќР°РїРёС€РёС‚Рµ РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° Р·РґРµСЃСЊ";
+		String linkPlac = "РЎСЃС‹Р»РєР° РґРѕР»Р¶РЅР° СЃРѕРґРµСЂР¶Р°С‚СЊ https://www.youtube.com/embed/";
+		String descPlac = "Р’РІРµРґРёС‚Рµ РѕРїРёСЃР°РЅРёРµ Р·РґРµСЃСЊ";
 		
 		Episode episode = new Episode();
 		
@@ -109,7 +109,7 @@ public class HelloController {
 		return md;
 	}
 	
-	//Метод POST, добавляющий эпизод
+	//РњРµС‚РѕРґ POST, РґРѕР±Р°РІР»СЏСЋС‰РёР№ СЌРїРёР·РѕРґ
 	@RequestMapping(value = "/addEpisodeAction", method = RequestMethod.POST)
 	public String addEpisodeAction(@Validated @ModelAttribute("episode") Episode episode, BindingResult result ,ModelMap map) throws UnsupportedEncodingException{
 		
@@ -136,11 +136,11 @@ public class HelloController {
 		
 	}
 	
-	//Список эпизодов
+	//РЎРїРёСЃРѕРє СЌРїРёР·РѕРґРѕРІ
 	@RequestMapping(value = "/getSeries/{id}")
 	public ModelAndView GetSeries(@PathVariable int id){
 		ModelAndView md = new ModelAndView("AllEpisodes");
-		String title = "Вы можеть смотреть сериал Madness Combat здесь";
+		String title = "Р’С‹ РјРѕР¶РµС‚СЊ СЃРјРѕС‚СЂРµС‚СЊ СЃРµСЂРёР°Р» Madness Combat Р·РґРµСЃСЊ";
 		
 		long count = episodeService.getCount();
 		
@@ -155,7 +155,7 @@ public class HelloController {
 		return md;
 	}
 	
-	//Просмотр эпизодов
+	//РџСЂРѕСЃРјРѕС‚СЂ СЌРїРёР·РѕРґРѕРІ
 	@RequestMapping(path = "/watchEpisode/{id}")
 	public ModelAndView watchEpisode(@PathVariable int id){
 		ModelAndView md = new ModelAndView("WatchEpisode");
@@ -169,7 +169,7 @@ public class HelloController {
 		return md;
 	}
 	
-	//Метод POST добавления комметариев
+	//РњРµС‚РѕРґ POST РґРѕР±Р°РІР»РµРЅРёСЏ РєРѕРјРјРµС‚Р°СЂРёРµРІ
 	@RequestMapping(value = "/addComment", method = RequestMethod.POST)
 	public String addComment(@Validated @ModelAttribute("comment") Comment comment, BindingResult result, ModelMap model ) throws UnsupportedEncodingException{
 		
@@ -186,12 +186,12 @@ public class HelloController {
 		return "redirect:/comments/1";
 	}
 	
-	//Список комметариев
+	//РЎРїРёСЃРѕРє РєРѕРјРјРµС‚Р°СЂРёРµРІ
 	@RequestMapping(value = "/comments/{id}")
 	public ModelAndView Commentaries(@PathVariable int id){
 		ModelAndView md = new ModelAndView("Comments");
-		String title = "Оставьте отзыв";		
-		String post = "Отправить";
+		String title = "РћСЃС‚Р°РІСЊС‚Рµ РѕС‚Р·С‹РІ";		
+		String post = "РћС‚РїСЂР°РІРёС‚СЊ";
 		
 		long count = commentService.getCount();
 		long pages = count / 5 + 1;
@@ -209,7 +209,7 @@ public class HelloController {
 		return md;
 	}
 	
-	//Доступ к галерее (В разработке)
+	//Р”РѕСЃС‚СѓРї Рє РіР°Р»РµСЂРµРµ (Р’ СЂР°Р·СЂР°Р±РѕС‚РєРµ)
 	@RequestMapping(value = "/galery/{id}")
 	public ModelAndView Gallery(@PathVariable int id){
 		ModelAndView md = new ModelAndView("Gallery");
@@ -223,8 +223,8 @@ public class HelloController {
 		
 		images = imageService.getGallery(id);
 		
-		String title2 = "Посмотрите галерею";
-		String butto = "Загрузить картинку";
+		String title2 = "РџРѕСЃРјРѕС‚СЂРёС‚Рµ РіР°Р»РµСЂРµСЋ";
+		String butto = "Р—Р°РіСЂСѓР·РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ";
 	
 		
 		md.addObject("butto", butto);
@@ -236,7 +236,7 @@ public class HelloController {
 		return md;
 	}
 	
-	//Добавление изображений (В разработке)
+	//Р”РѕР±Р°РІР»РµРЅРёРµ РёР·РѕР±СЂР°Р¶РµРЅРёР№ (Р’ СЂР°Р·СЂР°Р±РѕС‚РєРµ)
 	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
 	public String addImage(@Validated @ModelAttribute("image") Image image, ModelMap map, BindingResult result ) throws IOException{
 		
