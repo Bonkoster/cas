@@ -6,7 +6,7 @@
 <title>${title2 }</title>
 </head>
 <body>
-		<form:form action="/cas/addImage" modelAttribute="image" method="POST" cssClass="divbor" enctype="multipart/form-data" >
+		<form:form action="/addImage" modelAttribute="image" method="POST" cssClass="divbor" enctype="multipart/form-data" >
 		<table align="center">
 			<tr>
 				<td><form:label path="title"> Заголовок:</form:label></td>
@@ -37,11 +37,11 @@
 		</tr>
 	</table>
 	<div class="imgPagin">
-	<a href="/cas/galery/1" class="pagina">1</a>
+	<a href="/galery/1" class="pagina">1</a>
 	<c:forEach step="1" begin="2" end="${pages - 1}" var="i">
-	<a href="/cas/galery/${i}" class="pagina">${i}</a>
+	<a href="/galery/${i}" class="pagina">${i}</a>
 	</c:forEach>
-	<a href="/cas/galery/${pages}" class="pagina">${pages}</a>
+	<a href="/galery/${pages}" class="pagina">${pages}</a>
 	</div>
 </body>
 </html>

@@ -198,7 +198,7 @@ public class HelloController {
 						
 		List<Comment> coms = commentService.listComments(id);
 				
-		Comment comment = new Comment();
+		Comment comment = new Comment();		
 		
 		md.addObject("comment", comment);		
 		md.addObject("comments",coms);
@@ -225,6 +225,7 @@ public class HelloController {
 		
 		String title2 = "Посмотрите галерею";
 		String butto = "Загрузить картинку";
+	
 		
 		md.addObject("butto", butto);
 		md.addObject("title2",title2);
@@ -242,6 +243,9 @@ public class HelloController {
 		map.addAttribute("title", image.getTitle());
 		map.addAttribute("file", image.getFile());
 		
+		String mel = new String(image.getTitle().getBytes("ISO-8859-1"), "UTF-8");
+		
+		image.setTitle(mel);
 		
 		imageService.addImage(image);
 		return "redirect:/galery/1";

@@ -13,12 +13,12 @@
 <div class="Astarot divbor"></div>
 		<div id="navbarCollapse" class="collapse navbar-collapse darkTheme divbor">
     		<ul id="lor" class="nav navbar-nav">
-      			<li><a href="/cas/">Главная страница</a></li>
-      			<li><a href="/cas/getSeries/1">Все серии</a></li>
-      			<li><a href="/cas/comments/1">Отзывы</a></li>
-      			<li><a href="/cas/playNexus">Играть в Project Nexus </a></li>
-      			<li><a href="/cas/addEpisode">Добавить серию</a></li>
-      			<li><a href="/cas/galery/1">Галерея</a> </li>
+      			<li><a href="/">Главная страница</a></li>
+      			<li><a href="/getSeries/1">Все серии</a></li>
+      			<li><a href="/comments/1">Отзывы</a></li>
+      			<li><a href="/playNexus">Играть в Project Nexus </a></li>
+      			<li><a href="/addEpisode">Добавить серию</a></li>
+      			<li><a href="/galery/1">Галерея</a> </li>
     		</ul>
   		</div>
  </header>
