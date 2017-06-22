@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+
+.Astarot {
+	background: url("images/logo.jpg") no-repeat center top fixed;
+	width: 99%;
+	height: 250px;
+	background-size: 50%;
+}
+
+.gameWidth {
+	width: 80%;
+	height: 100%;
+}
+
+body {
+	background-color: #0d0d0d!important;
+}
+
+.comment {
+	color: #ff8080;
+	position: relative;
+}
+
+.commentmain {
+	width: 70%;
+}
+
+.commentcontent {
+	width: 800px;
+	position: inherit;
+	border: 2px solid gray;
+	padding: 6px;
+	margin: 5px;
+	word-wrap: break-word;
+}
+
+.commenttext {
+	color: #eee3e7;
+}
+
+.episodemain {
+	width: 70%;
+}
+
+.secretfunc {
+	visibility: collapse;
+}
+	
+.divbor {
+	border-radius: 10px;
+	background-color: #111312;
+	padding: 10px;
+	margin: 10px;
+	
+}	
+
+.pagina {
+	background-color: #111312;
+	padding: 6px;
+	margin: 1px;
+	color: #ff8080;
+	border: 1px solid ;
+	border-color: #ff8080;
+}
+
+.pagina:hover {
+	color: red;
+	font-style: normal;
+	text-decoration: none;
+	border-color: red;
+}
+
+.fieldBack {
+	background-color: black;
+	color: gray;
+	margin: 4px;
+	resize: none;
+	size: inherit;
+}
+
+.imgSize {
+	width: 320px;
+	height: 250px;
+	padding: 10px 10px;
+}
+
+.imgPagin {
+	text-align: center;
+	padding: 10px 0px;
+}

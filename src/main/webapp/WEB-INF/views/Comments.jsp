@@ -32,7 +32,7 @@
 <a href="/comments/${pages}" class="pagina">${pages}</a>
 </div>
 <div align="left" class="contentmain">
- <form:form action="/cas/addComment" method="POST" modelAttribute="comment" class="divbor" >
+ <form:form action="/addComment" method="POST" modelAttribute="comment" class="divbor" >
  	<table>
  		<tr>
  			<td><form:label path="author" >Автор:</form:label></td>
