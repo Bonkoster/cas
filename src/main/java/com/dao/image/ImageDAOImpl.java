@@ -37,6 +37,7 @@ public class ImageDAOImpl implements ImageDAO {
 			query.setMaxResults(20);
 			imgs = query.getResultList();
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();

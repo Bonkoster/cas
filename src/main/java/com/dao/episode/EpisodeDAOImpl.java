@@ -46,7 +46,6 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 	public void addEpisode(Episode episode) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
-		
 		try {
 			tx = sess.beginTransaction();
 			sess.save(episode);
