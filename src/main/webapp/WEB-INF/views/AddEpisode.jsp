@@ -6,7 +6,7 @@
 <title>${title }</title>
 </head>
 <body>
-	<form:form action="/addEpisodeAction" modelAttribute="episode" method="POST" cssClass="divbor">
+	<form:form action="/cas/addEpisodeAction" modelAttribute="episode" method="POST" cssClass="divbor">
 		<table align="center">
 			<tr>
 				<td><form:label path="title"> Заголовок:</form:label></td>
