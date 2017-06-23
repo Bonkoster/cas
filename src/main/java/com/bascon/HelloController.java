@@ -229,6 +229,7 @@ public class HelloController {
 		
 		images = imageService.getGallery(id);
 		
+		String hint = "Для увеличения щелкните по картинке";
 		String title2 = "Посмотрите галерею";
 		String butto = "Загрузить картинку";
 	
@@ -238,6 +239,7 @@ public class HelloController {
 		md.addObject("image",image);
 		md.addObject("images",images);
 		md.addObject("pages",pages);
+		md.addObject("hint",hint);
 		
 		return md;
 	}

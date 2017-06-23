@@ -31,7 +31,8 @@
 				</c:if>
 			<td align="center" width="400px">
 				<label>${i.title}</label><br>
-				<a href="${i.file }" ><img class="imgSize" src="${i.file}"></a>
+				<a href="${i.file }" ><img class="imgSize" src="${i.file}"></a><br>
+				<label>${hint }</label>
 			</td>
 		</c:forEach>
 		</tr>
