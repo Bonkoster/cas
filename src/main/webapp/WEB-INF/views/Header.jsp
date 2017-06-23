@@ -5,10 +5,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <header>
-  <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />" >
+  <link rel="stylesheet" type="text/css" href="<c:url value="/cas/src/main/webapp/resources/css/images/MC.png" />" >
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-   <link rel="icon" href="<c:url value="/resources/css/images/MC.png"/>" type="image/png" >
+   <link rel="icon" href="icon/MC.png" type="image/png" >
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="Astarot divbor"></div>
