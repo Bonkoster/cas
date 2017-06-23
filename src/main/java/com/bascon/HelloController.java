@@ -139,11 +139,11 @@ public class HelloController {
 		ModelAndView md = new ModelAndView("AllEpisodes");
 		String title = "Вы можеть смотреть сериал Madness Combat здесь";
 		
+		List<Episode> eps = episodeService.listEpisode(id);	
+		
 		long count = episodeService.getCount();
 		
-		long pages = count / 10 + 1;
-		
-		List<Episode> eps = episodeService.listEpisode(id);
+		long pages = count / 10 + 1;	
 		
 		md.addObject("pages",pages);
 		md.addObject("episodes",eps);
