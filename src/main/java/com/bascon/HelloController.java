@@ -46,9 +46,6 @@ public class HelloController {
 	@Autowired
 	ServletContext context;
 	
-	@Autowired
-	EpisodeValidation epsiodeValidator;
-	
 	private static final Logger logger = Logger.getLogger(HelloController.class);
 	
 	//Три сервиса для работы с базой данных
@@ -147,12 +144,6 @@ public class HelloController {
 		long pages = count / 10 + 1;
 		
 		List<Episode> eps = episodeService.listEpisode(id);
-		
-		for (Episode ep : eps) {
-			System.out.println(ep.getTitle());
-		}
-		
-		System.out.println("https://www.youtube.com/embed/DrtlTO5eD0U".length() );
 		
 		md.addObject("pages",pages);
 		md.addObject("episodes",eps);
