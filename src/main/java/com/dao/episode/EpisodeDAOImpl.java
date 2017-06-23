@@ -52,6 +52,7 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 			sess.save(episode);
 			tx.commit();
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();
