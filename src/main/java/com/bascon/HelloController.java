@@ -148,6 +148,12 @@ public class HelloController {
 		
 		List<Episode> eps = episodeService.listEpisode(id);
 		
+		for (Episode ep : eps) {
+			System.out.println(ep.getTitle());
+		}
+		
+		System.out.println("https://www.youtube.com/embed/DrtlTO5eD0U".length() );
+		
 		md.addObject("pages",pages);
 		md.addObject("episodes",eps);
 		md.addObject("title",title);

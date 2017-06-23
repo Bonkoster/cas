@@ -28,6 +28,7 @@ public class Episode {
 	
 	@Column(name = "episode_link")
 	@NotNull
+	@Size(max = 100)
 	private String link;
 	
 	@Column(name = "episode_desc")

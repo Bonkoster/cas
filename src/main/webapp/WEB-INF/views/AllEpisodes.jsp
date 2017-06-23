@@ -12,7 +12,7 @@
 			<c:forEach items="${episodes }" var="episo">
 			<div >
 			<tr>
-				<td class="divbor commentcontent"><a href="/cas/watchEpisode/${episo.id}">${episo.title }</a>    Добавлен ${episo.date}<br><br>
+				<td class="divbor commentcontent"><a href="/watchEpisode/${episo.id}">${episo.title }</a>    Добавлен ${episo.date}<br><br>
 				${episo.desc }
 				</td>
 			</tr>
@@ -23,11 +23,11 @@
 	</div>
 	<br>
 	<div align="center">
-<a href="/cas/getSeries/1" class="pagina">1</a>
+<a href="/getSeries/1" class="pagina">1</a>
 <c:forEach step="1" begin="2" end="${pages - 1}" var="i">
-<a href="/cas/getSeries/${i}" class="pagina">${i}</a>
+<a href="/getSeries/${i}" class="pagina">${i}</a>
 </c:forEach>
-<a href="/cas/getSeries/${pages}" class="pagina">${pages}</a>
+<a href="/getSeries/${pages}" class="pagina">${pages}</a>
 </div>
 </body>
 </html>
