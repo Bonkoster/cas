@@ -110,6 +110,8 @@ public class HelloController {
 	@RequestMapping(value = "/addEpisodeAction", method = RequestMethod.POST)
 	public String addEpisodeAction(@Validated @ModelAttribute("episode") Episode episode, BindingResult result ,ModelMap map) throws UnsupportedEncodingException{
 		
+		long fake = episodeService.getCount();
+		
 		map.addAttribute("title", episode.getTitle());
 		map.addAttribute("link",episode.getLink());
 		map.addAttribute("desc",episode.getDesc());
@@ -138,6 +140,8 @@ public class HelloController {
 	public ModelAndView GetSeries(@PathVariable int id){
 		ModelAndView md = new ModelAndView("AllEpisodes");
 		String title = "Вы можеть смотреть сериал Madness Combat здесь";
+		
+		long fake = episodeService.getCount();
 		
 		List<Episode> eps = episodeService.listEpisode(id);	
 		
@@ -209,6 +213,9 @@ public class HelloController {
 	//Доступ к галерее (В разработке)
 	@RequestMapping(value = "/galery/{id}")
 	public ModelAndView Gallery(@PathVariable int id){
+		
+		long fake = episodeService.getCount();
+		
 		ModelAndView md = new ModelAndView("Gallery");
 		
 		Image image = new Image();
