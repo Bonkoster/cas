@@ -19,7 +19,7 @@ import com.model.Image;
 public class ImageDAOImpl implements ImageDAO {
 	
 	SessionFactory sessionfactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Image.class).buildSessionFactory();
-
+	
 	public List<Image> getGallery(int page) {		
 		int first = 0;
 		
@@ -37,7 +37,6 @@ public class ImageDAOImpl implements ImageDAO {
 			query.setMaxResults(20);
 			imgs = query.getResultList();
 		} catch (Exception e) {
-			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();

@@ -41,7 +41,6 @@ public class CommentDAOImpl implements CommentDAO {
 	
 
 	public static SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Comment.class).buildSessionFactory();
-	
 
 	public List<Comment> getPageComments(int page) {
 		int first = 0;

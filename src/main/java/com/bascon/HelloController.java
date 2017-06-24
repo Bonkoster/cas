@@ -141,8 +141,6 @@ public class HelloController {
 		ModelAndView md = new ModelAndView("AllEpisodes");
 		String title = "Вы можеть смотреть сериал Madness Combat здесь";
 		
-		long fake = episodeService.getCount();
-		
 		List<Episode> eps = episodeService.listEpisode(id);	
 		
 		long count = episodeService.getCount();
@@ -213,8 +211,6 @@ public class HelloController {
 	//Доступ к галерее (В разработке)
 	@RequestMapping(value = "/galery/{id}")
 	public ModelAndView Gallery(@PathVariable int id){
-		
-		long fake = episodeService.getCount();
 		
 		ModelAndView md = new ModelAndView("Gallery");
 		
