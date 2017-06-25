@@ -13,23 +13,21 @@
   <property name="hibernate.connection.url">jdbc:mysql://localhost/madcom?UseUnicode=yes&amp;characterEncoding=utf8</property>
   <property name="hibernate.connection.username">root</property> -->
   <property name="hibernate.connection.password">ac8c4d10</property>
-  <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_7975f769758d9fa?reconnect=true?UseUnicode=yes&amp;characterEncoding=utf8</property>
+  <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_7975f769758d9fa?reconnect=true?UseUnicode=yes&amp;characterEncoding=utf8</property>
   <property name="hibernate.connection.username">bf529a773566a9</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
   <property name="show_sql">true</property>
-  <property name="hibernate.id.new_generator_mappings">false</property>
-  <property name="hibernate.c3p0.min_size">1</property>
-  <property name="hibernate.c3p0.max_size">40</property>
-  <property name="hibernate.c3p0.timeout">18000</property>
-  <property name="hibernate.c3p0.max_statements">50</property>
-  <property name="hibernate.c3p0.idle_test_period">10000</property>
-  <property name="hibernate.c3p0.validate">true</property>
-  <property name="hibernate.c3p0.acquire_increment">2</property>
-  <property name="hibernate.c3p0.acquireRetryAttempts">100</property>
-  <property name="hibernate.c3p0.acquireRetryDelay">5000</property>
-  <property name="hibernate.c3p0.testConnectionOnCheckin">false</property>
-  <property name="hibernate.c3p0.testConnectionOnCheckout">true</property>
-  <property name="hibernate.c3p0.checkoutTimeout">5000</property>
+   <property name="hibernate.c3p0.acquire_increment">1</property>
+    <property name="hibernate.c3p0.idle_test_period">100</property>
+    <property name="hibernate.c3p0.max_size">90</property>
+    <property name="hibernate.c3p0.max_statements">0</property>
+    <property name="hibernate.c3p0.min_size">1</property>
+    <property name="hibernate.c3p0.timeout">0</property>
+    <property name="hibernate.c3p0.testConnectionOnCheckin">true</property>
+    <property name="hibernate.c3p0.testConnectionOnCheckout">true</property>
+    <property name="hibernate.c3p0.unreturnedConnectionTimeout">300000</property>
+    <property name="hibernate.c3p0.debugUnreturnedConnectionStackTraces">true</property>
+    <property name="hibernate.c3p0.com.mchange.v2.c3p0.management.ManagementCoordinator=com.mchange.v2.c3p0.management.NullManagementCoordinator">com.mchange.v2.c3p0.management.NullManagementCoordinator</property>
   <mapping class="com.model.Comment"/>
   <mapping class="com.model.Image"/>
   <mapping class="com.model.Episode"/>
