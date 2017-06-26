@@ -30,8 +30,9 @@
 					<tr>
 				</c:if>
 			<td align="center" width="400px">
-				<label>${i.title}</label><br>
-				<a href="${i.file }" ><img class="imgSize" src="${i.file}"></a>
+				<label class="commenttext">${i.title}</label><br>
+				<a href="${i.file }" ><img class="imgSize" src="${i.file}"></a><br>
+				<label class="linktext">${hint }</label>
 			</td>
 		</c:forEach>
 		</tr>
