@@ -252,5 +252,10 @@ public class HelloController {
 		imageService.addImage(image);
 		return "redirect:/galery/1";
 	}
+	
+	@RequestMapping(value = "/Login")
+	public String Login(){
+		return "login";
+	}
 }
 

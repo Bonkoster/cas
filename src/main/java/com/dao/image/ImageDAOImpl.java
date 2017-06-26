@@ -37,6 +37,7 @@ public class ImageDAOImpl implements ImageDAO {
 			query.setMaxResults(20);
 			imgs = query.getResultList();
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();
@@ -52,8 +53,8 @@ public class ImageDAOImpl implements ImageDAO {
 			sess.save(file);
 			tx.commit();						
 		} catch (Exception e) {
-			e.printStackTrace();
 			tx.rollback();
+			e.printStackTrace();
 		} finally {
 			sess.close();
 		}
@@ -71,8 +72,8 @@ public class ImageDAOImpl implements ImageDAO {
 			}
 			tx.commit();						
 		} catch (Exception e) {
-			e.printStackTrace();
 			tx.rollback();
+			e.printStackTrace();
 		} finally {
 			sess.close();
 		}
@@ -104,6 +105,7 @@ public class ImageDAOImpl implements ImageDAO {
 			tx = sess.beginTransaction();
 			i = (Long) sess.createQuery("select count(*) from Image").uniqueResult();
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();

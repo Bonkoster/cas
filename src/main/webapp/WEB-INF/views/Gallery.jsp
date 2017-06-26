@@ -32,7 +32,7 @@
 			<td align="center" width="400px">
 				<label class="commenttext">${i.title}</label><br>
 				<a href="${i.file }" ><img class="imgSize" src="${i.file}"></a><br>
-				<label>${hint }</label>
+				<label class="linktext">${hint }</label>
 			</td>
 		</c:forEach>
 		</tr>

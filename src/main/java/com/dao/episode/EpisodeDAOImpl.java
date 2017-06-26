@@ -70,8 +70,8 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 				sess.delete(com);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			tx.rollback();
+			e.printStackTrace();
 		} finally {
 			sess.close();
 		}
@@ -103,6 +103,7 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 			tx = sess.beginTransaction();
 			i = (Long) sess.createQuery("select count(*) from Episode").uniqueResult();
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();
