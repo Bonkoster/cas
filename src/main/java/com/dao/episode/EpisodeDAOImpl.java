@@ -78,13 +78,13 @@ public class EpisodeDAOImpl implements EpisodesDAO {
 	}
 
 	public Episode getEpisode(int id) {
-		
 		Episode eps = null;
 		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
 			eps = sess.load(Episode.class, id);
+			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
 			e.printStackTrace();

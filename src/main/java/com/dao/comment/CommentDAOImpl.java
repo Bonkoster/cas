@@ -49,7 +49,7 @@ public class CommentDAOImpl implements CommentDAO {
 			first = first + 5;
 		}
 		
-		Session sess = sessionFactory.openSession();
+		Session sess = sessionFactory.getCurrentSession();
 		Transaction tx = null;
 		List<Comment> coms = new ArrayList<Comment>();
 		try {
@@ -69,7 +69,7 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	public void deleteComment(int id) {
-		Session sess = sessionFactory.openSession();
+		Session sess = sessionFactory.getCurrentSession();
 		Transaction tx = null;
 		
 		try {
@@ -87,7 +87,7 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	public void addComment(Comment com) {
-		Session sess = sessionFactory.openSession();
+		Session sess = sessionFactory.getCurrentSession();
 		Transaction tx = null;
 		
 		try {
@@ -104,7 +104,7 @@ public class CommentDAOImpl implements CommentDAO {
 	public long getCount() {
 		
 		long i = 0;
-		Session sess = sessionFactory.openSession();
+		Session sess = sessionFactory.getCurrentSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
