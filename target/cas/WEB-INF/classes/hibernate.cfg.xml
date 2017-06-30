@@ -7,40 +7,22 @@
   <property name="hibernate.connection.characterEncoding">utf8</property>
   <property name="hibernate.connection.useUnicode">true</property>
   <property name="hibernate.connection.autoReconnect">true</property>
+  <property name="hibernate.connection.pool_size">3</property> 
   <property name="hibernate.current_session_context_class">thread</property>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-   <!--  
-  <property name="hibernate.connection.password">root</property>
-  <property name="hibernate.connection.url">jdbc:mysql://localhost/madcom?UseUnicode=yes&amp;characterEncoding=utf8</property>
-  <property name="hibernate.connection.username">root</property> 
-  -->
   <property name="hibernate.enable_lazy_load_no_trans">true</property>
-
   <property name="hibernate.connection.username">bf529a773566a9</property>
   <property name="hibernate.connection.password">ac8c4d10</property>
   <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_7975f769758d9fa?reconnect=true?UseUnicode=yes&amp;characterEncoding=utf8</property>
-
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-  <property name="show_sql">true</property>
-  <!-- 
-   <property name="hibernate.c3p0.acquire_increment">1</property>
-    <property name="hibernate.c3p0.idle_test_period">100</property>
-    <property name="hibernate.c3p0.max_size">90</property>
-    <property name="hibernate.c3p0.max_statements">10</property>
-    <property name="hibernate.c3p0.min_size">1</property>
-    <property name="hibernate.c3p0.timeout">10</property>
-    <property name="hibernate.c3p0.testConnectionOnCheckin">true</property>
-    <property name="hibernate.c3p0.testConnectionOnCheckout">true</property>
-    <property name="hibernate.c3p0.unreturnedConnectionTimeout">3000</property>
-    <property name="hibernate.c3p0.debugUnreturnedConnectionStackTraces">true</property>
-    <property name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.WeblogicTransactionManagerLookup</property> 
-	<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
-	<property name="hibernate.current_session_context_class">org.hibernate.context.JTASessionContext</property> 
-	<property name="transaction.auto_close_session">true</property> 
-	<property name="max_fetch_depth">2</property>
-	<property name="connection.release_mode">after_transaction</property> 
-    <property name="hibernate.c3p0.com.mchange.v2.c3p0.management.ManagementCoordinator=com.mchange.v2.c3p0.management.NullManagementCoordinator">com.mchange.v2.c3p0.management.NullManagementCoordinator</property>
-     -->
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.c3p0.acquire_increment">1</property>
+  <property name="hibernate.c3p0.min_size">1</property>
+  <property name="hibernate.c3p0.max_size">5</property>
+  <property name="hibernate.c3p0.timeout">120</property>
+  <property name="hibernate.c3p0.max_statements">50</property>
+  <property name="hibernate.c3p0.idle_test_period">60</property>
+  <property name="hibernate.c3p0.validate">true</property>
   <mapping class="com.model.Comment"/>
   <mapping class="com.model.Image"/>
   <mapping class="com.model.Episode"/>

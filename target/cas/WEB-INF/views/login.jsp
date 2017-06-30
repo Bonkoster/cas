@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Введите логин и пароль</title>
+<title>Введите логин и пароль админа</title>
 </head>
 <body>
 <div align="center">
@@ -20,7 +20,7 @@
 		</p>
 	</c:if>
 	<p>
-		<label for="username">Логин</label>
+		<label for="username">Логин </label>
 		<input type="text" id="username" name="username" class="fieldBack" />	
 	</p>
 	<p>
@@ -34,4 +34,5 @@
 </form>
 </div>
 </body>
+<%@ include file="Footer.jsp" %>
 </html>

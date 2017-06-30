@@ -12,5 +12,5 @@
  </iframe>
  </div>
 </body>
-
+<%@ include file="Footer.jsp" %>
 </html>

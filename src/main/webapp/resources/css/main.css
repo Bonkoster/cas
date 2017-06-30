@@ -2,6 +2,7 @@
 
 .Astarot {
 	background: url("images/image.jpg") no-repeat;
+	opacity: 0.6;
 	width: 98.5%;
 	height: 300px;
 	background-size: 100%;

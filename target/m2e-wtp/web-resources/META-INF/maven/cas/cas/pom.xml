@@ -31,17 +31,6 @@
 	    <artifactId>hibernate-core</artifactId>
 	    <version>5.2.9.Final</version>
 	</dependency>
-	<dependency>
-	 <groupId>org.hibernate</groupId>
-	 <artifactId>hibernate-ehcache</artifactId>
-	 <version>4.1.9.Final</version>
-	 <exclusions>
-	     <exclusion>
-	         <groupId>net.sf.ehcache</groupId>
-	         <artifactId>ehcache-core</artifactId>
-	     </exclusion>
-	 </exclusions>
-	</dependency>
 	<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 	<dependency>
 	    <groupId>commons-io</groupId>
@@ -59,26 +48,7 @@
 	    <groupId>org.glassfish.web</groupId>
 	    <artifactId>jstl-impl</artifactId>
 	    <version>1.2</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.jolbox/bonecp -->
-	<dependency>
-	    <groupId>com.jolbox</groupId>
-	    <artifactId>bonecp</artifactId>
-	    <version>0.8.0.RELEASE</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.jolbox/bonecp-spring -->
-	<dependency>
-	    <groupId>com.jolbox</groupId>
-	    <artifactId>bonecp-spring</artifactId>
-	    <version>0.8.0.RELEASE</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.jolbox/bonecp-provider -->
-	<dependency>
-	    <groupId>com.jolbox</groupId>
-	    <artifactId>bonecp-provider</artifactId>
-	    <version>0.7.1.RELEASE</version>
-	</dependency>
-	
+	</dependency>	
 	<dependency>
 	    <groupId>org.webjars</groupId>
 	    <artifactId>bootstrap</artifactId>
@@ -96,13 +66,6 @@
 	    <artifactId>dom4j</artifactId>
 	    <version>1.6.1</version>
 	</dependency>
-	    <!-- https://mvnrepository.com/artifact/com.google.appengine/appengine-maven-plugin -->
-	<dependency>
-	    <groupId>com.google.appengine</groupId>
-	    <artifactId>appengine-maven-plugin</artifactId>
-	    <version>1.9.54</version>
-	</dependency>
-	    
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-core</artifactId>
@@ -173,14 +136,7 @@
 	</dependency>
 </dependencies>
 	  <build>
-		<plugins>
-		
-		<plugin>
-	            <groupId>com.google.appengine</groupId>
-	            <artifactId>appengine-maven-plugin</artifactId>
-	            <version>1.9.9</version>
-	        </plugin>
-		
+		<plugins>		
 				<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-compiler-plugin</artifactId>
