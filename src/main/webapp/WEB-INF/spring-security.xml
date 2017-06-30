@@ -21,6 +21,7 @@
  	
  	<sec:http >
  		<sec:intercept-url pattern="/addEpisode" access="hasRole('ADMIN')"/>
+ 		<sec:intercept-url pattern="favicon.ico" access="permitAll" />
  		<sec:form-login login-page="/Login" />
  		<sec:logout/>
  		<sec:csrf disabled="true" />

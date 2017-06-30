@@ -257,5 +257,10 @@ public class HelloController {
 	public String Login(){
 		return "login";
 	}
+	
+	 @RequestMapping("favicon.ico")
+     String favicon() {
+         return "forward:/resources/favicon.ico";
+     }
 }
 

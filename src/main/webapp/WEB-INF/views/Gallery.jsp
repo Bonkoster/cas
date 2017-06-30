@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>${title2 }</title>
+
 </head>
 <body>
 		<form:form action="/addImage" modelAttribute="image" method="POST" cssClass="divbor">
