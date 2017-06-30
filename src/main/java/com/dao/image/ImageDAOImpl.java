@@ -20,6 +20,7 @@ public class ImageDAOImpl implements ImageDAO {
 	
 	SessionFactory sessionfactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Image.class).buildSessionFactory();
 	
+	
 	public List<Image> getGallery(int page) {		
 		int first = 0;
 		
@@ -27,7 +28,7 @@ public class ImageDAOImpl implements ImageDAO {
 			first = first + 20;
 		}
 		
-		Session sess = sessionfactory.getCurrentSession();
+		Session sess = sessionfactory.openSession();
 		Transaction tx = null;
 		List<Image> imgs = new ArrayList<Image>();
 		try {
@@ -46,14 +47,13 @@ public class ImageDAOImpl implements ImageDAO {
 	}
 
 	public void addImage(Image file) {
-		Session sess = sessionfactory.getCurrentSession();
+		Session sess = sessionfactory.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
 			sess.save(file);
 			tx.commit();						
 		} catch (Exception e) {
-			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();
@@ -62,7 +62,7 @@ public class ImageDAOImpl implements ImageDAO {
 	}
 
 	public void deleteimage(int id) {
-		Session sess = sessionfactory.getCurrentSession();
+		Session sess = sessionfactory.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
@@ -82,7 +82,7 @@ public class ImageDAOImpl implements ImageDAO {
 
 	public Image getImage(int id) {
 		Image eps = null;
-		Session sess = sessionfactory.getCurrentSession();
+		Session sess = sessionfactory.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
@@ -98,7 +98,7 @@ public class ImageDAOImpl implements ImageDAO {
 	}
 
 	public long getCount() {
-		Session sess = sessionfactory.getCurrentSession();
+		Session sess = sessionfactory.openSession();
 		Transaction tx = null;
 		long i = 0;
 		try {

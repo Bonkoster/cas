@@ -49,7 +49,7 @@ public class CommentDAOImpl implements CommentDAO {
 			first = first + 5;
 		}
 		
-		Session sess = sessionFactory.getCurrentSession();
+		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		List<Comment> coms = new ArrayList<Comment>();
 		try {
@@ -69,7 +69,7 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	public void deleteComment(int id) {
-		Session sess = sessionFactory.getCurrentSession();
+		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try {
@@ -79,6 +79,7 @@ public class CommentDAOImpl implements CommentDAO {
 				sess.delete(com);
 			}
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();
@@ -87,7 +88,7 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	public void addComment(Comment com) {
-		Session sess = sessionFactory.getCurrentSession();
+		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try {
@@ -95,6 +96,7 @@ public class CommentDAOImpl implements CommentDAO {
 			sess.save(com);
 			tx.commit();
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();
@@ -104,12 +106,13 @@ public class CommentDAOImpl implements CommentDAO {
 	public long getCount() {
 		
 		long i = 0;
-		Session sess = sessionFactory.getCurrentSession();
+		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
 			i =  (Long) sess.createQuery("select count(*) from Comment").uniqueResult(); 
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
 			sess.close();
