@@ -10,4 +10,5 @@
 	<iframe src="${link }" frameborder="0" marginheight="200" height="800" width="1000" scrolling="auto"></iframe>
 </div>
 </body>
+<%@ include file="Footer.jsp" %>
 </html>

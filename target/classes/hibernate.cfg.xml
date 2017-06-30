@@ -7,15 +7,9 @@
   <property name="hibernate.connection.characterEncoding">utf8</property>
   <property name="hibernate.connection.useUnicode">true</property>
   <property name="hibernate.connection.autoReconnect">true</property>
-   
   <property name="hibernate.connection.pool_size">3</property> 
   <property name="hibernate.current_session_context_class">thread</property>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-  <!-- 
-  <property name="hibernate.connection.password">root</property>
-  <property name="hibernate.connection.url">jdbc:mysql://localhost/madcom?UseUnicode=yes&amp;characterEncoding=utf8</property>
-  <property name="hibernate.connection.username">root</property> 
-   -->
   <property name="hibernate.enable_lazy_load_no_trans">true</property>
   <property name="hibernate.connection.username">bf529a773566a9</property>
   <property name="hibernate.connection.password">ac8c4d10</property>
@@ -25,11 +19,10 @@
   <property name="hibernate.c3p0.acquire_increment">1</property>
   <property name="hibernate.c3p0.min_size">1</property>
   <property name="hibernate.c3p0.max_size">5</property>
-  <property name="hibernate.c3p0.timeout">300</property>
+  <property name="hibernate.c3p0.timeout">120</property>
   <property name="hibernate.c3p0.max_statements">50</property>
   <property name="hibernate.c3p0.idle_test_period">60</property>
   <property name="hibernate.c3p0.validate">true</property>
-  <property name="hibernate.c3p0.preferredTestQuery">SELECT 1</property>
   <mapping class="com.model.Comment"/>
   <mapping class="com.model.Image"/>
   <mapping class="com.model.Episode"/>

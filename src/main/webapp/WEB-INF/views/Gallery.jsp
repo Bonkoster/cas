@@ -6,15 +6,15 @@
 <title>${title2 }</title>
 </head>
 <body>
-		<form:form action="/addImage" modelAttribute="image" method="POST" cssClass="divbor" enctype="multipart/form-data" >
+		<form:form action="/addImage" modelAttribute="image" method="POST" cssClass="divbor">
 		<table align="center">
 			<tr>
 				<td><form:label path="title"> Заголовок:</form:label></td>
 				<td><form:input path="title" size="100px" cssClass="fieldBack" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="file" >Картинку сюда:</form:label></td>
-				<td><form:input path="file" size="100" cssClass="fieldBack"></form:input></td>
+				<td><form:label path="file" >Ссылку на картинку сюда:</form:label></td>
+				<td><form:input path="file" size="100" cssClass="fieldBack" ></form:input></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="${butto}" class="btn btn-primary"  ></td>
@@ -38,11 +38,12 @@
 		</tr>
 	</table>
 	<div class="imgPagin">
-	<a href="/galery/1" class="pagina">1</a>
+	<a href="/galery/1" class="pagina">Первая</a>
 	<c:forEach step="1" begin="2" end="${pages - 1}" var="i">
 	<a href="/galery/${i}" class="pagina">${i}</a>
 	</c:forEach>
-	<a href="/galery/${pages}" class="pagina">${pages}</a>
+	<a href="/galery/${pages}" class="pagina">Последняя</a>
 	</div>
 </body>
+<%@ include file="Footer.jsp" %>
 </html>

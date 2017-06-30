@@ -23,11 +23,12 @@
 	</div>
 	<br>
 	<div align="center">
-<a href="/getSeries/1" class="pagina">1</a>
+<a href="/getSeries/1" class="pagina">Первая</a>
 <c:forEach step="1" begin="2" end="${pages - 1}" var="i">
 <a href="/getSeries/${i}" class="pagina">${i}</a>
 </c:forEach>
-<a href="/getSeries/${pages}" class="pagina">${pages}</a>
+<a href="/getSeries/${pages}" class="pagina">Последняя</a>
 </div>
 </body>
+<%@ include file="Footer.jsp" %>
 </html>

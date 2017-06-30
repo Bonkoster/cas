@@ -34,4 +34,5 @@
 </form>
 </div>
 </body>
+<%@ include file="Footer.jsp" %>
 </html>

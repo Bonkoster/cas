@@ -14,7 +14,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="link" > Ссылка:</form:label></td>
-				<td><form:input path="link" size="100px" cssClass="fieldBack" /></td>
+				<td><form:input path="link" size="100px" cssClass="fieldBack" placeholder="${linkPlac }" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="desc" > Описание:</form:label></td>
@@ -26,4 +26,5 @@
 		</table>
 	</form:form>
 </body>
+<%@ include file="Footer.jsp" %>
 </html>

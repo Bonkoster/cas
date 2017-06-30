@@ -59,7 +59,7 @@ public class HelloController {
 		ModelAndView md = new ModelAndView("Hello");
 		
 		String rick = "https://www.youtube.com/embed/AqT-MJnbePM";		
-		String title = "Добро пожаловать на мой сайт о Madness Combat";
+		String title = "Презентационный сайт о Madness Combat";
 		md.addObject("title", title);
 		md.addObject("rick",rick);
 		
